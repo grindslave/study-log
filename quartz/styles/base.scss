@@ -4,6 +4,7 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: none;
   text-size-adjust: none;
   overflow-x: hidden;
   width: 100vw;
@@ -20,12 +21,13 @@ section {
 }
 
 .text-highlight {
-  background-color: var(--textHighlight);
+  background-color: #fff23688;
   padding: 0 0.1rem;
   border-radius: 5px;
 }
+
 ::selection {
-  background: color-mix(in srgb, var(--tertiary) 60%, rgba(255, 255, 255, 0));
+  background: color-mix(in srgb, var(--tertiary) 75%, transparent);
   color: var(--darkgray);
 }
 
@@ -42,20 +44,8 @@ ul,
 .math {
   color: var(--darkgray);
   fill: var(--darkgray);
-  hyphens: auto;
-}
-
-p,
-ul,
-text,
-a,
-li,
-ol,
-ul,
-.katex,
-.math {
   overflow-wrap: anywhere;
-  /* tr and td removed from list of selectors for overflow-wrap, allowing them to use default 'normal' property value */
+  hyphens: auto;
 }
 
 .math {
@@ -64,12 +54,8 @@ ul,
   }
 }
 
-strong {
-  font-weight: $semiBoldWeight;
-}
-
 a {
-  font-weight: $semiBoldWeight;
+  font-weight: 600;
   text-decoration: none;
   transition: color 0.2s ease;
   color: var(--secondary);
@@ -83,7 +69,6 @@ a {
     background-color: var(--highlight);
     padding: 0 0.1rem;
     border-radius: 5px;
-    line-height: 1.4rem;
 
     &:has(> img) {
       background-color: none;
@@ -121,6 +106,7 @@ a {
   }
 }
 
+
 .page {
   @media all and (max-width: $fullPageWidth) {
     margin: 0 auto;
@@ -129,6 +115,8 @@ a {
   }
 
   & article {
+    position: relative;
+
     & > h1 {
       font-size: 2rem;
     }
@@ -182,7 +170,6 @@ a {
     }
 
     & .sidebar.left {
-      z-index: 1;
       left: calc(calc(100vw - $pageWidth) / 2 - $sidePanelWidth);
       @media all and (max-width: $fullPageWidth) {
         gap: 0;
@@ -192,13 +179,20 @@ a {
 
     & .sidebar.right {
       right: calc(calc(100vw - $pageWidth) / 2 - $sidePanelWidth);
-      flex-wrap: wrap;
       & > * {
         @media all and (max-width: $fullPageWidth) {
           flex: 1;
-          min-width: 140px;
         }
       }
+    }
+  }
+
+  & .page-header {
+    width: $pageWidth;
+    margin: $topSpacing auto 0 auto;
+    @media all and (max-width: $fullPageWidth) {
+      width: initial;
+      margin-top: 2rem;
     }
   }
 
@@ -213,8 +207,10 @@ a {
   }
 
   & .page-header {
+    width: $pageWidth;
     margin: $topSpacing auto 0 auto;
     @media all and (max-width: $fullPageWidth) {
+      width: initial;
       margin-top: 2rem;
     }
   }
@@ -288,9 +284,11 @@ thead {
   font-weight: revert;
   margin-bottom: 0;
 
-  article > & > a[role="anchor"] {
+  article > & > a {
     color: var(--dark);
-    background-color: transparent;
+    &.internal {
+      background-color: transparent;
+    }
   }
 }
 
@@ -305,6 +303,7 @@ h6 {
     opacity: 0;
     transition: opacity 0.2s ease;
     transform: translateY(-0.1rem);
+    display: inline-block;
     font-family: var(--codeFont);
     user-select: none;
   }
@@ -341,13 +340,11 @@ h6 {
   margin-bottom: 1rem;
 }
 
-figure[data-rehype-pretty-code-figure] {
-  margin: 0;
-  position: relative;
+div[data-rehype-pretty-code-fragment] {
   line-height: 1.6rem;
   position: relative;
 
-  & > [data-rehype-pretty-code-title] {
+  & > div[data-rehype-pretty-code-title] {
     font-family: var(--codeFont);
     font-size: 0.9rem;
     padding: 0.1rem 0.5rem;
@@ -359,17 +356,18 @@ figure[data-rehype-pretty-code-figure] {
   }
 
   & > pre {
-    padding: 0;
+    padding: 0.5rem 0;
   }
 }
 
+
+
 pre {
   font-family: var(--codeFont);
-  padding: 0 0.5rem;
+  padding: 0.5rem;
   border-radius: 5px;
   overflow-x: auto;
   border: 1px solid var(--lightgray);
-  position: relative;
 
   &:has(> code.mermaid) {
     border: none;
@@ -382,8 +380,6 @@ pre {
     counter-reset: line;
     counter-increment: line 0;
     display: grid;
-    padding: 0.5rem 0;
-    overflow-x: scroll;
 
     & [data-highlighted-chars] {
       background-color: var(--highlight);
@@ -436,33 +432,23 @@ p {
   line-height: 1.6rem;
 }
 
-.table-container {
-  overflow-x: auto;
-
-  & > table {
-    margin: 1rem;
-    padding: 1.5rem;
-    border-collapse: collapse;
-
-    th,
-    td {
-      min-width: 75px;
-    }
-
-    & > * {
-      line-height: 2rem;
-    }
+table {
+  margin: 1rem;
+  padding: 1.5rem;
+  border-collapse: collapse;
+  & > * {
+    line-height: 2rem;
   }
 }
 
 th {
   text-align: left;
-  padding: 0.4rem 0.7rem;
+  padding: 0.4rem 1rem;
   border-bottom: 2px solid var(--gray);
 }
 
 td {
-  padding: 0.2rem 0.7rem;
+  padding: 0.2rem 1rem;
 }
 
 tr {
@@ -501,10 +487,6 @@ video {
   flex: 1 1 auto;
 }
 
-div:has(> .overflow) {
-  position: relative;
-}
-
 ul.overflow,
 ol.overflow {
   max-height: 400;
@@ -536,17 +518,4 @@ ol.overflow {
   ul {
     padding-left: 1rem;
   }
-}
-
-.katex-display {
-  overflow-x: auto;
-  overflow-y: hidden;
-}
-
-.external-embed.youtube,
-iframe.pdf {
-  aspect-ratio: 16 / 9;
-  height: 100%;
-  width: 100%;
-  border-radius: 5px;
 }
