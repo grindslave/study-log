@@ -26,7 +26,7 @@ export const defaultContentPageLayout: PageLayout = {
     Component.Search(),
     Component.Darkmode(),
     Component.DesktopOnly(Component.RecentNotes({
-      title: "Recent",
+      title: "Recent Notes",
       limit: 4
     })),
     Component.DesktopOnly(Component.Explorer({
@@ -62,7 +62,7 @@ export const defaultContentPageLayout: PageLayout = {
     Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
     Component.MobileOnly(Component.RecentNotes({
-      title: "Recent",
+      title: "Recent Notes",
       limit: 2
     })),
     Component.MobileOnly(Component.Explorer({
@@ -95,7 +95,7 @@ export const defaultListPageLayout: PageLayout = {
     Component.Search(),
     Component.Darkmode(),
     Component.DesktopOnly(Component.RecentNotes({
-      title: "Recent",
+      title: "Recent Notes",
       limit: 4
     })),
     Component.DesktopOnly(Component.Explorer({
