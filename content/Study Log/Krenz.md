@@ -7,5 +7,7 @@ longform:
   scenes: []
   ignoredFiles: []
 title: Krenz
+tags:
+  - krenz
 ---
 Krenzzz
