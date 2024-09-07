@@ -1,3 +1,39 @@
 @use "./base.scss";
 
 // put your custom CSS here!
+
+// Recent
+
+.recent-notes {
+    margin: 0 0 1em;
+}
+div.recent-notes > h3 {
+    font-size: var(--t6);
+}
+div.recent-notes > ul.recent-ul > li {
+    margin: 0.75em 0;
+}
+.recent-notes .desc p {
+    margin: 0;
+}
+.recent-notes .tags {
+    display: none;
+}
+
+// Footer
+
+body footer > :first-child {
+    line-height: 125%;
+    margin-top: 0;
+}
+body footer ul {
+    flex-wrap: wrap;
+    gap: unset;
+    margin: -0.5em -1em 0 0;
+}
+body footer ul > * {
+    margin-right: 1em;
+}
+body footer a {
+    color: var(--gray);
+}
