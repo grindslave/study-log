@@ -1,2 +1,2 @@
-anime and style studies
+anime and style studies, 
 nothing much
