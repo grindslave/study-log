@@ -62,11 +62,11 @@ export const defaultContentPageLayout: PageLayout = {
     Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
     Component.MobileOnly(Component.RecentNotes({
-      title: "Most recent",
-      limit: 5
+      title: "Recent",
+      limit: 6
     })),
     Component.MobileOnly(Component.Explorer({
-      title: "Explore",
+      title: "Notes",
       useSavedState: true,
       sortFn: (a, b) => {
         if ((!a.file && !b.file) || (a.file && b.file)) {
@@ -95,11 +95,11 @@ export const defaultListPageLayout: PageLayout = {
     Component.Search(),
     Component.Darkmode(),
     Component.DesktopOnly(Component.RecentNotes({
-      title: "Most recent",
-      limit: 5
+      title: "Recent",
+      limit: 3
     })),
     Component.DesktopOnly(Component.Explorer({
-      title: "Explore",
+      title: "Notes",
       useSavedState: true,
       sortFn: (a, b) => {
         if ((!a.file && !b.file) || (a.file && b.file)) {
