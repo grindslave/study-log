@@ -14,7 +14,7 @@ export default ((opts?: Options) => {
     return (
       <footer class={`${displayClass ?? ""}`}>
         <p>
-        Notes by <a href="https://discordapp.com/users/417843328210436097">gigi</a> created with <a href="https://quartz.jzhao.xyz/">Quartz v{version}</a> © {year}
+        Notes compiled by <a href="https://discordapp.com/users/417843328210436097">gigi</a>.
         </p>
         <ul>
           {Object.entries(links).map(([text, link]) => (
