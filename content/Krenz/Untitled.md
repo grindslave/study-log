@@ -1,5 +1,5 @@
 ---
-title: Krenzz
+title: Krenz
 draft: false
 tags:
   - krenz
