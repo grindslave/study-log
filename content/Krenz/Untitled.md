@@ -1,5 +1,6 @@
 ---
 title: Krenz
+date: 2025-08-25
 draft: false
 tags:
   - krenz
